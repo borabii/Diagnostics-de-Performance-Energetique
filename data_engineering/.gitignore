@@ -1,0 +1,15 @@
+/data
+orchestrator/dags/__pycache__
+orchestrator/dags/dags_sources_raw_data/__pycache__
+orchestrator/dags/data
+orchestrator/logs
+orchestrator/plugins
+orchestrator/airflow-docker-config/pgdata
+venv
+orchestrator/dags/dags_hadoop_to_postgresql/__pycache__
+orchestrator/dags/dags_sources_power_bi/__pycache__
+notebooks/.ipynb_checkpoints
+orchestrator/dags/spark_jobs/__pycache__
+spark/postgres-jar
+spark/java
+orchestrator/dags/dags_rawdata_trasform/__pycache__

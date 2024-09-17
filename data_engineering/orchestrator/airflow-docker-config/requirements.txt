@@ -1,0 +1,5 @@
+pyspark
+SQLAlchemy
+apache-airflow==2.9.2
+apache-airflow-providers-apache-spark
+apache-airflow-providers-apache-hdfs 
