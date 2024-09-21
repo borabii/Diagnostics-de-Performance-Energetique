@@ -1,6 +1,6 @@
 pyspark==3.5.1
 streamlit
 pandas
-joblib
+joblib==1.4.2
 plotly
 scikit-learn
