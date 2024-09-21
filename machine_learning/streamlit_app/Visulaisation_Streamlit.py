@@ -6,7 +6,8 @@ import os
 from sklearn.preprocessing import OrdinalEncoder, StandardScaler
 
 # Charger les données
-file_path = './output_/Dpe_Join_Enedis.csv'
+current_dir = os.getcwd()
+file_path = os.path.join(current_dir, 'output_', 'Dpe_Join_Enedis.csv')
 df = pd.read_csv(file_path, low_memory=False)
 
 # Traitement des données
@@ -18,7 +19,9 @@ df['consommation_dpe_annuelle'] = df['Conso_5_usages_par_m²_é_primaire'] * df[
 df['consommation_reelle_par_m2'] = df['consommation_reelle_kwh'] / df['Surface_habitable_logement']
 
 # Charger le modèle et les colonnes utilisées lors de l'entraînement
-best_model = joblib.load('./output_/meilleur_modele.pkl')
+
+file_path = os.path.join(current_dir, 'output_', 'meilleur_modele.pkl')
+best_model = joblib.load(file_path)
 columns_used_for_training = joblib.load('./output_/columns_used_for_training.pkl')
 
 # Prétraitement
@@ -38,21 +41,24 @@ columns_to_exclude = [
 ]
 
 # Encoder et normaliser
-if os.path.exists('./output_/ordinal_encoder.pkl'):
-    ordinal_encoder = joblib.load('./output_/ordinal_encoder.pkl')
+file_path = os.path.join(current_dir, 'output_', 'ordinal_encoder.pkl')
+if os.path.exists(file_path):
+    ordinal_encoder = joblib.load(file_path)
 else:
     df_cat = df[cat_cols].astype(str)
     ordinal_encoder = OrdinalEncoder()
     encoded_cat = ordinal_encoder.fit_transform(df_cat)
     joblib.dump(ordinal_encoder, 'ordinal_encoder.pkl')
 
-if os.path.exists('output_/scaler.pkl'):
-    scaler = joblib.load('./output_/scaler.pkl')
+file_path = os.path.join(current_dir, 'output_', 'scaler.pkl')
+
+if os.path.exists(file_path):
+    scaler = joblib.load(file_path)
 else:
     features_num = df.select_dtypes(include=[float]).drop(columns=columns_to_exclude)
     scaler = StandardScaler()
     scaler.fit(features_num)
-    joblib.dump(scaler, './output_/scaler.pkl')
+    joblib.dump(scaler, file_path)
 
 df_cat = df[cat_cols].astype(str)
 encoded_cat = ordinal_encoder.transform(df_cat)
