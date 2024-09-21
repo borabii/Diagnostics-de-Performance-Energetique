@@ -23,7 +23,7 @@ for file in files:
 
 file_path = os.path.join(current_dir, 'machine_learning/streamlit_app/output_', 'meilleur_modele.pkl')
 df = pd.read_csv(file_path, low_memory=False)
-df.head()
+st.dataframe(df.head())
 # # Traitement des données
 # df['consommation_annuelle_moyenne_par_site_de_l_adresse_mwh'] = pd.to_numeric(df['consommation_annuelle_moyenne_par_site_de_l_adresse_mwh'], errors='coerce')
 # df['Surface_habitable_logement'] = pd.to_numeric(df['Surface_habitable_logement'], errors='coerce')
