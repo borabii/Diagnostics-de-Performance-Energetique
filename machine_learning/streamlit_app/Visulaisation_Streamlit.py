@@ -13,6 +13,7 @@ from sklearn.preprocessing import OrdinalEncoder, StandardScaler
 # Obtenir le chemin du répertoire courant
 current_dir = os.getcwd()
 st.write(f"Current working directory: {current_dir}")
+# file_path = os.path.join(current_dir, 'machine_learning/streamlit_app/output_', 'meilleur_modele.pkl')
 
 # Lister le contenu du répertoire courant
 st.write("Files and directories in the current directory:")
@@ -20,8 +21,9 @@ files = os.listdir(current_dir)
 for file in files:
     st.write(file)
 
-# df = pd.read_csv(file_path, low_memory=False)
-
+file_path = os.path.join(current_dir, 'machine_learning/streamlit_app/output_', 'meilleur_modele.pkl')
+df = pd.read_csv(file_path, low_memory=False)
+df.head()
 # # Traitement des données
 # df['consommation_annuelle_moyenne_par_site_de_l_adresse_mwh'] = pd.to_numeric(df['consommation_annuelle_moyenne_par_site_de_l_adresse_mwh'], errors='coerce')
 # df['Surface_habitable_logement'] = pd.to_numeric(df['Surface_habitable_logement'], errors='coerce')
