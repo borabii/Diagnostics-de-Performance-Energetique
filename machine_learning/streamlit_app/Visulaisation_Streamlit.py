@@ -21,12 +21,12 @@ df['consommation_reelle_par_m2'] = df['consommation_reelle_kwh'] / df['Surface_h
 
 # Charger le modèle et les colonnes utilisées lors de l'entraînement
 
-file_path = os.path.join(current_dir, 'machine_learning/streamlit_app/output_', 'meilleur_modele.pkl')
-best_model = joblib.load(file_path)
+best_model_path = os.path.join(current_dir, 'machine_learning/streamlit_app/output_', 'meilleur_modele.pkl')
+best_model = joblib.load(best_model_path)
 
-file_path = os.path.join(current_dir, 'machine_learning/streamlit_app/output_', 'columns_used_for_training.pkl')
+columns_used_path = os.path.join(current_dir, 'machine_learning/streamlit_app/output_', 'columns_used_for_training.pkl')
 
-columns_used_for_training = joblib.load(file_path)
+columns_used_for_training = joblib.load(columns_used_path)
 
 # Prétraitement
 cat_cols = ['Type_installation_ECS_(général)', 'Qualité_isolation_menuiseries', 'Qualité_isolation_murs',
