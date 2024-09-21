@@ -181,6 +181,10 @@ if not filtered_by_address.empty:
         <td style="padding: 8px; border: 1px solid #ddd;">Classe DPE estimée</td>
         <td style="padding: 8px; border: 1px solid #ddd;">{dpe_class}</td>
       </tr>
+       <tr>
+        <td style="padding: 8px; border: 1px solid #ddd;">Type bâtiment</td>
+        <td style="padding: 8px; border: 1px solid #ddd;">{filtered_by_address['type_batiment_add'].iloc[0]}</td>
+      </tr>
     </table>
     """
 
